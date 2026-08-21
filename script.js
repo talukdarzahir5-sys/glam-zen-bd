@@ -1,0 +1,1 @@
+function order(product){const msg=encodeURIComponent(`আমি ${product} অর্ডার করতে চাই। দয়া করে দাম, ডেলিভারি ও পেমেন্ট সম্পর্কে জানাবেন।`);window.open(`https://www.facebook.com/share/19KVYgXFED/?message=${msg}`,'_blank');}
