@@ -1,12 +1,12 @@
+/* =========================
+   ORDER → FACEBOOK PAGE
+   ========================= */
+
 function order(product) {
-  const msg = encodeURIComponent(
-    `আমি ${product} অর্ডার করতে চাই। দয়া করে দাম, ডেলিভারি ও পেমেন্ট সম্পর্কে জানাবেন।`
-  );
+  const facebookPage =
+    "https://www.facebook.com/share/19KVYgXFED/";
 
-  const facebookUrl =
-    `https://www.facebook.com/share/19KVYgXFED/?message=${msg}`;
-
-  window.open(facebookUrl, "_blank");
+  window.open(facebookPage, "_blank");
 }
 
 
@@ -40,6 +40,7 @@ document.addEventListener("DOMContentLoaded", function () {
     lightbox.querySelector(".lightbox-close");
 
 
+  // ছবি tap করলে বড় হবে
   images.forEach(function (image) {
 
     image.style.cursor = "zoom-in";
@@ -53,20 +54,27 @@ document.addEventListener("DOMContentLoaded", function () {
 
       document.body.style.overflow = "hidden";
 
+      lightboxImage.style.transform = "scale(1)";
+      lightboxImage.style.cursor = "zoom-in";
+
     });
 
   });
 
 
+  // Close button
   closeButton.addEventListener("click", function () {
 
     lightbox.classList.remove("active");
 
     document.body.style.overflow = "";
 
+    lightboxImage.style.transform = "scale(1)";
+
   });
 
 
+  // ছবির বাইরে tap করলে বন্ধ হবে
   lightbox.addEventListener("click", function (event) {
 
     if (event.target === lightbox) {
@@ -75,26 +83,30 @@ document.addEventListener("DOMContentLoaded", function () {
 
       document.body.style.overflow = "";
 
+      lightboxImage.style.transform = "scale(1)";
+
     }
 
   });
 
 
-  let zoomed = false;
+  // বড় ছবিতে আবার tap করলে zoom হবে
+  lightboxImage.addEventListener("click", function (event) {
 
-  lightboxImage.addEventListener("click", function () {
+    event.stopPropagation();
 
-    zoomed = !zoomed;
+    const isZoomed =
+      lightboxImage.style.transform === "scale(1.8)";
 
-    if (zoomed) {
-
-      lightboxImage.style.transform = "scale(1.8)";
-      lightboxImage.style.cursor = "zoom-out";
-
-    } else {
+    if (isZoomed) {
 
       lightboxImage.style.transform = "scale(1)";
       lightboxImage.style.cursor = "zoom-in";
+
+    } else {
+
+      lightboxImage.style.transform = "scale(1.8)";
+      lightboxImage.style.cursor = "zoom-out";
 
     }
 
