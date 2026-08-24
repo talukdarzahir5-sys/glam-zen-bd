@@ -40,8 +40,6 @@ document.addEventListener("DOMContentLoaded", function () {
     lightbox.querySelector(".lightbox-close");
 
 
-  /* Open image */
-
   images.forEach(function (image) {
 
     image.style.cursor = "zoom-in";
@@ -60,8 +58,6 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
 
-  /* Close button */
-
   closeButton.addEventListener("click", function () {
 
     lightbox.classList.remove("active");
@@ -70,8 +66,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
   });
 
-
-  /* Close by clicking outside image */
 
   lightbox.addEventListener("click", function (event) {
 
@@ -85,8 +79,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
   });
 
-
-  /* Double tap / double click zoom */
 
   let zoomed = false;
 
@@ -109,90 +101,3 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
 });
-/* =========================
-   PRODUCT IMAGE ZOOM
-   ========================= */
-
-.product-img img {
-  cursor: zoom-in;
-  transition: transform 0.25s ease;
-}
-
-#imageLightbox {
-  position: fixed;
-  inset: 0;
-  z-index: 9999;
-  background: rgba(0, 0, 0, 0.88);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.25s ease, visibility 0.25s ease;
-}
-
-#imageLightbox.active {
-  opacity: 1;
-  visibility: visible;
-}
-
-.lightbox-content {
-  position: relative;
-  max-width: 95vw;
-  max-height: 90vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.lightbox-image {
-  max-width: 92vw;
-  max-height: 85vh;
-  width: auto;
-  height: auto;
-  object-fit: contain;
-  border-radius: 14px;
-  cursor: zoom-in;
-  transition: transform 0.3s ease;
-  user-select: none;
-}
-
-.lightbox-close {
-  position: absolute;
-  top: -48px;
-  right: 0;
-  width: 42px;
-  height: 42px;
-  border: none;
-  border-radius: 50%;
-  background: white;
-  color: #222;
-  font-size: 30px;
-  line-height: 1;
-  cursor: pointer;
-  z-index: 10000;
-}
-
-.lightbox-close:hover {
-  transform: scale(1.08);
-}
-
-/* Mobile */
-
-@media (max-width: 600px) {
-
-  #imageLightbox {
-    padding: 12px;
-  }
-
-  .lightbox-image {
-    max-width: 94vw;
-    max-height: 82vh;
-  }
-
-  .lightbox-close {
-    top: -50px;
-    right: 0;
-  }
-}
