@@ -1,12 +1,53 @@
 /* =========================
-   ORDER → FACEBOOK PAGE
+   ORDER → FACEBOOK + PRODUCT MESSAGE
    ========================= */
 
 function order(product) {
-  const facebookPage =
-    "https://www.facebook.com/share/19KVYgXFED/";
 
-  window.open(facebookPage, "_blank");
+  const message =
+    `আমি ${product} অর্ডার করতে চাই।\n\n` +
+    `দয়া করে এই product-এর দাম, ডেলিভারি চার্জ, ` +
+    `ডেলিভারি সময় এবং পেমেন্ট পদ্ধতি জানাবেন।`;
+
+  // Message clipboard-এ copy
+  if (navigator.clipboard) {
+
+    navigator.clipboard.writeText(message)
+      .then(function () {
+
+        alert(
+          `✅ ${product}\n\n` +
+          `Order message copy হয়েছে।\n\n` +
+          `এখন Facebook Page-এ গিয়ে Messenger-এ Paste করে Send করুন।`
+        );
+
+        window.open(
+          "https://www.facebook.com/share/19KVYgXFED/",
+          "_blank"
+        );
+
+      })
+      .catch(function () {
+
+        alert(message);
+
+        window.open(
+          "https://www.facebook.com/share/19KVYgXFED/",
+          "_blank"
+        );
+
+      });
+
+  } else {
+
+    alert(message);
+
+    window.open(
+      "https://www.facebook.com/share/19KVYgXFED/",
+      "_blank"
+    );
+
+  }
 }
 
 
@@ -40,7 +81,8 @@ document.addEventListener("DOMContentLoaded", function () {
     lightbox.querySelector(".lightbox-close");
 
 
-  // ছবি tap করলে বড় হবে
+  /* ছবি tap করলে বড় হবে */
+
   images.forEach(function (image) {
 
     image.style.cursor = "zoom-in";
@@ -62,7 +104,8 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
 
-  // Close button
+  /* Close button */
+
   closeButton.addEventListener("click", function () {
 
     lightbox.classList.remove("active");
@@ -74,7 +117,8 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
 
-  // ছবির বাইরে tap করলে বন্ধ হবে
+  /* ছবির বাইরে tap করলে বন্ধ হবে */
+
   lightbox.addEventListener("click", function (event) {
 
     if (event.target === lightbox) {
@@ -90,7 +134,8 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
 
-  // বড় ছবিতে আবার tap করলে zoom হবে
+  /* বড় ছবিতে tap করলে zoom */
+
   lightboxImage.addEventListener("click", function (event) {
 
     event.stopPropagation();
