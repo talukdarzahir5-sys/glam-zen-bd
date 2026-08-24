@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+Sitemap: https://talukdarzahir5-sys.github.io/glam-zen-bd/sitemap.xml
+
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
