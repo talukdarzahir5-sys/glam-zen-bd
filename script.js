@@ -1,5 +1,5 @@
 /* =========================
-   ORDER → FACEBOOK MESSENGER + PRODUCT MESSAGE
+   ORDER → DIRECT FACEBOOK MESSENGER
    ========================= */
 
 function order(product) {
@@ -9,45 +9,11 @@ function order(product) {
     `দয়া করে এই product-এর দাম, ডেলিভারি চার্জ, ` +
     `ডেলিভারি সময় এবং পেমেন্ট পদ্ধতি জানাবেন।`;
 
-  // Message clipboard-এ copy
-  if (navigator.clipboard) {
+  // Messenger-এ সরাসরি যাবে
+  const messengerUrl = `https://m.me/1BxgcFVUJH?text=${encodeURIComponent(message)}`;
 
-    navigator.clipboard.writeText(message)
-      .then(function () {
+  window.open(messengerUrl, "_blank");
 
-        alert(
-          `✅ ${product}\n\n` +
-          `Order message copy হয়েছে।\n\n` +
-          `এখন Facebook Messenger-এ Paste করে Send করুন।`
-        );
-
-        window.open(
-          "https://www.facebook.com/share/1BxgcFVUJH/",
-          "_blank"
-        );
-
-      })
-      .catch(function () {
-
-        alert(message);
-
-        window.open(
-          "https://www.facebook.com/share/1BxgcFVUJH/",
-          "_blank"
-        );
-
-      });
-
-  } else {
-
-    alert(message);
-
-    window.open(
-      "https://www.facebook.com/share/1BxgcFVUJH/",
-      "_blank"
-    );
-
-  }
 }
 
 
