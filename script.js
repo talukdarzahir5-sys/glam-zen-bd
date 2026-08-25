@@ -1,13 +1,13 @@
 /* =========================
-   ORDER → FACEBOOK + PRODUCT MESSAGE
+   ORDER → FACEBOOK MESSENGER + PRODUCT MESSAGE
    ========================= */
 
 function order(product) {
 
   const message =
     `আমি ${product} অর্ডার করতে চাই।\n\n` +
-    `দয়া করে এই product-এর দাম, ডেলিভারি চার্জ, ` +
-    `ডেলিভারি সময় এবং পেমেন্ট পদ্ধতি জানাবেন।`;
+    `দয়া করে এই product-এর দাম, ডেলিভারি চার্জ, ` +
+    `ডেলিভারি সময় এবং পেমেন্ট পদ্ধতি জানাবেন।`;
 
   // Message clipboard-এ copy
   if (navigator.clipboard) {
@@ -17,12 +17,12 @@ function order(product) {
 
         alert(
           `✅ ${product}\n\n` +
-          `Order message copy হয়েছে।\n\n` +
-          `এখন Facebook Page-এ গিয়ে Messenger-এ Paste করে Send করুন।`
+          `Order message copy হয়েছে।\n\n` +
+          `এখন Facebook Messenger-এ Paste করে Send করুন।`
         );
 
         window.open(
-          "https://www.facebook.com/share/19KVYgXFED/",
+          "https://www.facebook.com/share/1BxgcFVUJH/",
           "_blank"
         );
 
@@ -32,7 +32,7 @@ function order(product) {
         alert(message);
 
         window.open(
-          "https://www.facebook.com/share/19KVYgXFED/",
+          "https://www.facebook.com/share/1BxgcFVUJH/",
           "_blank"
         );
 
@@ -43,7 +43,7 @@ function order(product) {
     alert(message);
 
     window.open(
-      "https://www.facebook.com/share/19KVYgXFED/",
+      "https://www.facebook.com/share/1BxgcFVUJH/",
       "_blank"
     );
 
@@ -81,7 +81,7 @@ document.addEventListener("DOMContentLoaded", function () {
     lightbox.querySelector(".lightbox-close");
 
 
-  /* ছবি tap করলে বড় হবে */
+  /* ছবি tap করলে বড় হবে */
 
   images.forEach(function (image) {
 
@@ -134,7 +134,7 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
 
-  /* বড় ছবিতে tap করলে zoom */
+  /* বড় ছবিতে tap করলে zoom */
 
   lightboxImage.addEventListener("click", function (event) {
 
