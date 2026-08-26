@@ -9,8 +9,8 @@ function order(product) {
     `দয়া করে এই product-এর দাম, ডেলিভারি চার্জ, ` +
     `ডেলিভারি সময় এবং পেমেন্ট পদ্ধতি জানাবেন।`;
 
-  // Messenger-এ সরাসরি যাবে
-  const messengerUrl = `https://m.me/1BxgcFVUJH?text=${encodeURIComponent(message)}`;
+  // Messenger-এ সরাসরি যাবে - Page ID দিয়ে
+  const messengerUrl = `https://m.me/61578607263593?text=${encodeURIComponent(message)}`;
 
   window.open(messengerUrl, "_blank");
 
