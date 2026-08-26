@@ -1,15 +1,34 @@
 /* =========================
-   ORDER → DIRECT FACEBOOK MESSENGER
+   ORDER → WHATSAPP
    ========================= */
 
-function order(product) {
+function orderWhatsApp(product) {
 
   const message =
     `আমি ${product} অর্ডার করতে চাই।\n\n` +
     `দয়া করে এই product-এর দাম, ডেলিভারি চার্জ, ` +
     `ডেলিভারি সময় এবং পেমেন্ট পদ্ধতি জানাবেন।`;
 
-  // Messenger-এ সরাসরি যাবে - Page ID দিয়ে
+  // WhatsApp সরাসরি
+  const whatsappUrl = `https://wa.me/8801857240568?text=${encodeURIComponent(message)}`;
+
+  window.open(whatsappUrl, "_blank");
+
+}
+
+
+/* =========================
+   ORDER → FACEBOOK MESSENGER
+   ========================= */
+
+function orderMessenger(product) {
+
+  const message =
+    `আমি ${product} অর্ডার করতে চাই।\n\n` +
+    `দয়া করে এই product-এর দাম, ডেলিভারি চার্জ, ` +
+    `ডেলিভারি সময় এবং পেমেন্ট পদ্ধতি জানাবেন।`;
+
+  // Messenger সরাসরি
   const messengerUrl = `https://m.me/61578607263593?text=${encodeURIComponent(message)}`;
 
   window.open(messengerUrl, "_blank");
