@@ -1,5 +1,5 @@
 /* =========================
-   ORDER → WHATSAPP / MESSENGER
+   ORDER POPUP
    ========================= */
 
 function order(product) {
@@ -9,35 +9,119 @@ function order(product) {
     `দয়া করে এই product-এর দাম, ডেলিভারি চার্জ, ` +
     `ডেলিভারি সময় এবং পেমেন্ট পদ্ধতি জানাবেন।`;
 
-  const choice = confirm(
-    `আপনি "${product}" অর্ডার করতে চান?\n\n` +
-    `OK চাপলে WhatsApp খুলবে।\n` +
-    `Cancel চাপলে Messenger খুলবে।`
-  );
+  const popup = document.createElement("div");
 
-  if (choice) {
+  popup.className = "order-popup";
 
-    // =========================
-    // WHATSAPP
-    // =========================
+  popup.innerHTML = `
+    <div class="order-popup-box">
 
-    const whatsappUrl =
-      `https://wa.me/8801857240568?text=${encodeURIComponent(message)}`;
+      <button class="order-popup-close" aria-label="Close">
+        ×
+      </button>
 
-    window.open(whatsappUrl, "_blank");
+      <div class="order-popup-icon">
+        🛍️
+      </div>
 
-  } else {
+      <h3>
+        আপনি কোথায় অর্ডার করতে চান?
+      </h3>
 
-    // =========================
-    // FACEBOOK MESSENGER
-    // =========================
+      <p class="order-product">
+        ${product}
+      </p>
 
-    const messengerUrl =
-      `https://m.me/61578607263593`;
+      <button class="order-whatsapp">
+        🟢 WhatsApp-এ অর্ডার করুন
+      </button>
 
-    window.open(messengerUrl, "_blank");
+      <button class="order-messenger">
+        🔵 Messenger-এ অর্ডার করুন
+      </button>
+
+      <button class="order-cancel">
+        ❌ বন্ধ করুন
+      </button>
+
+    </div>
+  `;
+
+  document.body.appendChild(popup);
+
+  setTimeout(function () {
+    popup.classList.add("show");
+  }, 10);
+
+
+  /* =========================
+     WHATSAPP
+     ========================= */
+
+  popup
+    .querySelector(".order-whatsapp")
+    .addEventListener("click", function () {
+
+      const whatsappUrl =
+        `https://wa.me/8801857240568?text=${encodeURIComponent(message)}`;
+
+      window.open(whatsappUrl, "_blank");
+
+      popup.remove();
+
+    });
+
+
+  /* =========================
+     MESSENGER
+     ========================= */
+
+  popup
+    .querySelector(".order-messenger")
+    .addEventListener("click", function () {
+
+      const messengerUrl =
+        `https://m.me/61578607263593`;
+
+      window.open(messengerUrl, "_blank");
+
+      popup.remove();
+
+    });
+
+
+  /* =========================
+     CLOSE
+     ========================= */
+
+  function closePopup() {
+
+    popup.classList.remove("show");
+
+    setTimeout(function () {
+      popup.remove();
+    }, 250);
 
   }
+
+  popup
+    .querySelector(".order-popup-close")
+    .addEventListener("click", closePopup);
+
+  popup
+    .querySelector(".order-cancel")
+    .addEventListener("click", closePopup);
+
+
+  /* বাইরে tap করলে বন্ধ */
+
+  popup.addEventListener("click", function (event) {
+
+    if (event.target === popup) {
+      closePopup();
+    }
+
+  });
 
 }
 
@@ -82,10 +166,6 @@ document.addEventListener("DOMContentLoaded", function () {
     lightbox.querySelector(".lightbox-close");
 
 
-  /* =========================
-     IMAGE CLICK → ZOOM
-     ========================= */
-
   images.forEach(function (image) {
 
     image.style.cursor = "zoom-in";
@@ -107,10 +187,6 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
 
-  /* =========================
-     CLOSE BUTTON
-     ========================= */
-
   closeButton.addEventListener("click", function () {
 
     lightbox.classList.remove("active");
@@ -121,10 +197,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
   });
 
-
-  /* =========================
-     CLICK OUTSIDE → CLOSE
-     ========================= */
 
   lightbox.addEventListener("click", function (event) {
 
@@ -140,10 +212,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
   });
 
-
-  /* =========================
-     IMAGE CLICK → ZOOM 1.8x
-     ========================= */
 
   lightboxImage.addEventListener("click", function (event) {
 
