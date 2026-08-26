@@ -720,3 +720,206 @@ footer a:hover {
     top: -50px;
   }
 }
+/* =========================
+   ORDER POPUP
+   ========================= */
+
+.order-popup {
+  position: fixed;
+  inset: 0;
+
+  background: rgba(0, 0, 0, 0.55);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 20px;
+
+  z-index: 99999;
+
+  opacity: 0;
+  visibility: hidden;
+
+  transition:
+    opacity 0.25s ease,
+    visibility 0.25s ease;
+}
+
+
+.order-popup.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+
+.order-popup-box {
+  width: min(420px, 100%);
+
+  background: #ffffff;
+
+  border-radius: 24px;
+
+  padding: 30px 24px 24px;
+
+  text-align: center;
+
+  position: relative;
+
+  box-shadow:
+    0 20px 60px rgba(0, 0, 0, 0.25);
+
+  transform: translateY(25px) scale(0.95);
+
+  transition: transform 0.25s ease;
+}
+
+
+.order-popup.show .order-popup-box {
+  transform: translateY(0) scale(1);
+}
+
+
+.order-popup-icon {
+  font-size: 42px;
+
+  margin-bottom: 10px;
+}
+
+
+.order-popup-box h3 {
+  margin: 0;
+
+  font-size: 22px;
+
+  line-height: 1.4;
+}
+
+
+.order-product {
+  margin: 8px 0 22px;
+
+  font-size: 15px;
+
+  font-weight: 600;
+
+  opacity: 0.7;
+}
+
+
+.order-popup-box button {
+  width: 100%;
+
+  border: none;
+
+  border-radius: 14px;
+
+  padding: 14px 16px;
+
+  margin-top: 10px;
+
+  font-family: inherit;
+
+  font-size: 16px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.15s ease,
+    opacity 0.15s ease;
+}
+
+
+.order-popup-box button:active {
+  transform: scale(0.97);
+}
+
+
+/* WhatsApp */
+
+.order-whatsapp {
+  background: #25D366;
+
+  color: #ffffff;
+}
+
+
+/* Messenger */
+
+.order-messenger {
+  background: #0084FF;
+
+  color: #ffffff;
+}
+
+
+/* Close */
+
+.order-cancel {
+  background: #f2f2f2;
+
+  color: #444;
+}
+
+
+/* X Button */
+
+.order-popup-close {
+  position: absolute;
+
+  top: 12px;
+  right: 14px;
+
+  width: 38px !important;
+  height: 38px;
+
+  padding: 0 !important;
+
+  margin: 0 !important;
+
+  border-radius: 50% !important;
+
+  background: #f3f3f3;
+
+  color: #555;
+
+  font-size: 24px !important;
+
+  line-height: 38px;
+}
+
+
+.order-popup-box button:hover {
+  opacity: 0.9;
+}
+
+
+/* =========================
+   MOBILE
+   ========================= */
+
+@media (max-width: 480px) {
+
+  .order-popup {
+    padding: 16px;
+  }
+
+  .order-popup-box {
+    padding: 28px 18px 20px;
+
+    border-radius: 22px;
+  }
+
+  .order-popup-box h3 {
+    font-size: 20px;
+  }
+
+  .order-popup-box button {
+    font-size: 15px;
+
+    padding: 13px 14px;
+  }
+
+}
