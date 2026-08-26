@@ -1,37 +1,43 @@
 /* =========================
-   ORDER → WHATSAPP
+   ORDER → WHATSAPP / MESSENGER
    ========================= */
 
-function orderWhatsApp(product) {
+function order(product) {
 
   const message =
     `আমি ${product} অর্ডার করতে চাই।\n\n` +
     `দয়া করে এই product-এর দাম, ডেলিভারি চার্জ, ` +
     `ডেলিভারি সময় এবং পেমেন্ট পদ্ধতি জানাবেন।`;
 
-  // WhatsApp সরাসরি
-  const whatsappUrl = `https://wa.me/8801857240568?text=${encodeURIComponent(message)}`;
+  const choice = confirm(
+    `আপনি "${product}" অর্ডার করতে চান?\n\n` +
+    `OK চাপলে WhatsApp খুলবে।\n` +
+    `Cancel চাপলে Messenger খুলবে।`
+  );
 
-  window.open(whatsappUrl, "_blank");
+  if (choice) {
 
-}
+    // =========================
+    // WHATSAPP
+    // =========================
 
+    const whatsappUrl =
+      `https://wa.me/8801857240568?text=${encodeURIComponent(message)}`;
 
-/* =========================
-   ORDER → FACEBOOK MESSENGER
-   ========================= */
+    window.open(whatsappUrl, "_blank");
 
-function orderMessenger(product) {
+  } else {
 
-  const message =
-    `আমি ${product} অর্ডার করতে চাই।\n\n` +
-    `দয়া করে এই product-এর দাম, ডেলিভারি চার্জ, ` +
-    `ডেলিভারি সময় এবং পেমেন্ট পদ্ধতি জানাবেন।`;
+    // =========================
+    // FACEBOOK MESSENGER
+    // =========================
 
-  // Messenger সরাসরি
-  const messengerUrl = `https://m.me/61578607263593?text=${encodeURIComponent(message)}`;
+    const messengerUrl =
+      `https://m.me/61578607263593`;
 
-  window.open(messengerUrl, "_blank");
+    window.open(messengerUrl, "_blank");
+
+  }
 
 }
 
@@ -52,8 +58,18 @@ document.addEventListener("DOMContentLoaded", function () {
 
   lightbox.innerHTML = `
     <div class="lightbox-content">
-      <button class="lightbox-close" aria-label="Close">×</button>
-      <img class="lightbox-image" src="" alt="Product image">
+
+      <button
+        class="lightbox-close"
+        aria-label="Close">
+        ×
+      </button>
+
+      <img
+        class="lightbox-image"
+        src=""
+        alt="Product image">
+
     </div>
   `;
 
@@ -66,7 +82,9 @@ document.addEventListener("DOMContentLoaded", function () {
     lightbox.querySelector(".lightbox-close");
 
 
-  /* ছবি tap করলে বড় হবে */
+  /* =========================
+     IMAGE CLICK → ZOOM
+     ========================= */
 
   images.forEach(function (image) {
 
@@ -89,7 +107,9 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
 
-  /* Close button */
+  /* =========================
+     CLOSE BUTTON
+     ========================= */
 
   closeButton.addEventListener("click", function () {
 
@@ -102,7 +122,9 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
 
-  /* ছবির বাইরে tap করলে বন্ধ হবে */
+  /* =========================
+     CLICK OUTSIDE → CLOSE
+     ========================= */
 
   lightbox.addEventListener("click", function (event) {
 
@@ -119,7 +141,9 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
 
-  /* বড় ছবিতে tap করলে zoom */
+  /* =========================
+     IMAGE CLICK → ZOOM 1.8x
+     ========================= */
 
   lightboxImage.addEventListener("click", function (event) {
 
